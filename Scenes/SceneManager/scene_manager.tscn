@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8llenv4yy7sq"]
+
+[ext_resource type="Script" path="res://Scenes/SceneManager/scene_manager.gd" id="1_gdtpy"]
+[ext_resource type="PackedScene" uid="uid://4twbdn06w2a8" path="res://Scenes/UI/Menus/TitleScreen/title_screen.tscn" id="2_bloxe"]
+[ext_resource type="AudioStream" uid="uid://c5ic470haa333" path="res://Assets/PlaceHolderSong.mp3" id="3_vhsva"]
+[ext_resource type="PackedScene" uid="uid://c03h6ygt7ddxy" path="res://Scenes/UI/Menus/Settings/audio_settings.tscn" id="4_3f6cy"]
+[ext_resource type="PackedScene" uid="uid://d1xetuvlgpv3a" path="res://Scenes/UI/Menus/Pause/pause_menu.tscn" id="5_apfqm"]
+[ext_resource type="PackedScene" uid="uid://cgbh07inosss0" path="res://Scenes/Autoloads/audio_handler.tscn" id="6_txaea"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_gdtpy")
+
+[node name="GameScenes" type="Node" parent="."]
+
+[node name="TitleScreen" parent="." instance=ExtResource("2_bloxe")]
+
+[node name="PlaceHolderSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vhsva")
+volume_db = -12.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="AudioSettings" parent="." instance=ExtResource("4_3f6cy")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_apfqm")]
+process_mode = 3
+visible = false
+
+[node name="AudioHandler" parent="." instance=ExtResource("6_txaea")]
+process_mode = 3

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwwh0cea28d3w"]
+
+[ext_resource type="Script" path="res://Scenes/Components/AcquireItem/acquire_item_component.gd" id="1_7eok8"]
+
+[node name="AcquireItemComponent" type="Node"]
+script = ExtResource("1_7eok8")

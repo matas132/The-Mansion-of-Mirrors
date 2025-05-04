@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bktojkvrrewrk"]
+
+[ext_resource type="Script" path="res://Scenes/Components/MirrorPortal/mirror_portal_component.gd" id="1_f8m5k"]
+
+[node name="MirrorPortalComponent" type="Node"]
+script = ExtResource("1_f8m5k")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxss133srb1ki"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Player/test_player.gd" id="1_ekhbo"]
+[ext_resource type="Texture2D" uid="uid://b5y6pyihgs2fg" path="res://icon.svg" id="2_5i6rb"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/inventory.gd" id="3_na83q"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/item_pickup.gd" id="3_pvwvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ystb"]
+size = Vector2(128, 128)
+
+[node name="Test_Player" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_ekhbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5i6rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ystb")
+
+[node name="Additional" type="Node" parent="."]
+
+[node name="Inventory" type="Node" parent="Additional"]
+script = ExtResource("3_na83q")
+
+[node name="Item_Pickup" type="Node" parent="Additional"]
+script = ExtResource("3_pvwvw")

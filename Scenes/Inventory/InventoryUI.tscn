@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://gq6iao7j0vrr"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/inventory_ui.gd" id="1_cajsa"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cajsa")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="HUD/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Details" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Description" type="Label" parent="HUD/MarginContainer/VBoxContainer/Details"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Use" type="Button" parent="HUD/MarginContainer/VBoxContainer/Details"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "USE"
+
+[node name="Drop" type="Button" parent="HUD/MarginContainer/VBoxContainer/Details"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "DROP"
+
+[node name="Popup" type="Popup" parent="HUD"]
+size = Vector2i(300, 50)
+
+[node name="NotificationText" type="Label" parent="HUD/Popup"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="NotificationTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Details/Use" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Details/Drop" to="." method="_on_drop_button_pressed"]
+[connection signal="timeout" from="NotificationTimer" to="." method="_on_NotificationTimer_timeout"]
